@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import List from './comp/board/BoardList'
+import Regist from './comp/board/BoardRegist'
+import Find from './comp/board/BoardFind'
+import Modify from './comp/board/BoardModify'
+import UserNameInput from './comp/user/UserNameInput'; 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <About />
+        <Routes>
+          <Route path={"/"} element={<UserNameInput />} /> 
+          <Route path={"/boardList"} element={<List />} />
+          <Route path={"/boardRegist"} element={<Regist />} />
+          <Route path={"/boardFind"} element={<Find />} />
+          <Route path={"/boardModify"} element={<Modify />} />
+
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
+function About() {
+  return (
+    <div>
+      <Link to="/">Start</Link> <br/>
+      <Link to="/boardList">List</Link>
+    </div>
+  )
+}
+
 
 export default App;
