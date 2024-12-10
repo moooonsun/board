@@ -17,8 +17,10 @@ export default function BoardModify() {
         obj.author = modify.author;
 
         boardModify(obj)
-            .then(() => {
+            .then(res => {
+                if(res.status === 200){
                 navigate('/boardList')
+                }
             })
     }
 

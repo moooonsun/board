@@ -15,12 +15,12 @@ export default function BoardRegist() {
             author: userName
         };
 
-        boardRegist(obj).then(() => {
-            
+        boardRegist(obj)
+        .then(res => {
+            if(res.status === 200){
             navigate('/boardList');
-        }).catch(() => {
-            alert('실패');
-        });
+            }
+        })
     }
 
     return (

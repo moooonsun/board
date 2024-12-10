@@ -15,8 +15,10 @@ export default function BoardList() {
     function startBoardList(seachItem) {
         boardList(seachItem)
             .then(res => {
-                console.log(res.data)
+      
+                if(res.status === 200){
                 setBoards(res.data);
+            }
             });
     }
 

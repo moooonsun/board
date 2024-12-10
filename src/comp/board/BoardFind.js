@@ -17,7 +17,10 @@ export default function BoardFind() {
         param.id = boardIdx;
         boardFind(param)
             .then(res => {
-                setFind(res.data);
+                if(res.status === 200){
+                    setFind(res.data);
+                }
+             
             });
     }
 
@@ -25,8 +28,11 @@ export default function BoardFind() {
         const obj = new Object();
         obj.id = boardIdx;
         boardRemove(obj)
-            .then(() => {
-                navigate('/boardList');
+            .then(res => {
+                if(res.status === 200){
+                    navigate('/boardList');
+                }
+               
             });
     }
 
@@ -45,11 +51,13 @@ export default function BoardFind() {
         const obj = new Object();
         obj.id = boardIdx;
         boardGood(obj)
-            .then(() => {
+            .then(res => {
+                if(res.status === 200){
                 setFind(prevFind => ({
                     ...prevFind,
                     good: prevFind.good + 1
                 }));
+            }
             });
     }
 
